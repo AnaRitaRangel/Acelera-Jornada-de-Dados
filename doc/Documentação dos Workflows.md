@@ -4,7 +4,7 @@ Esta pasta contém explicações detalhadas dos workflows criados com n8n, organ
 
 ## 📂 Conteúdo
 
-- Aula 3: [Ver workflow de acompanhamento](workflows/acompanhamento-acelerador.json) - Workflow que coleta dados de progresso via formulário, registra no Google Sheets e envia email motivacional.
+- Aula 3: [📄 Ver workflow de acompanhamento](workflows/acompanhamento-acelerador.json) - Workflow que coleta dados de progresso via formulário, registra no Google Sheets e envia email motivacional.
 - Aula 4:  
 
 ## 🛤️ Propósito
