@@ -1,0 +1,217 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Acompanhamento do ACELERA",
+        "formDescription": "Workflow de n8n para acompanhar o progresso individual do Acelera",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Qual trilha você está fazendo?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Introdução ao n8n com agentes de IA"
+                  },
+                  {
+                    "option": "Trilha de SQL com DBT core"
+                  },
+                  {
+                    "option": "Trilha de Python"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Qual o número da aula?",
+              "fieldType": "number",
+              "placeholder": "01",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Qual o título da aula?",
+              "placeholder": "Introdução ao n8n e agentes de IA"
+            },
+            {
+              "fieldLabel": "Qual a descrição da aula?",
+              "placeholder": "Conhecer os conceitos básicos de automação, fluxos e uso de IA no n8n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        16,
+        -48
+      ],
+      "id": "b2b38d92-ab8d-4ff7-a337-822836eabe88",
+      "name": "On form submission",
+      "webhookId": "81079ed4-a83a-4176-9a50-bbd689b4c76d"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1HynDYuiTLfifw-U2Ujsm6FEC9BX0SvlVEfi2wcFCNXw",
+          "mode": "list",
+          "cachedResultName": "Acompanhamento do ACELERA com n8n",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1HynDYuiTLfifw-U2Ujsm6FEC9BX0SvlVEfi2wcFCNXw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1HynDYuiTLfifw-U2Ujsm6FEC9BX0SvlVEfi2wcFCNXw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "DATA": "={{ $json.submittedAt }}",
+            "TRILHA": "={{ $json['Qual trilha você está fazendo?'] }}",
+            "# ": "={{ $json['Qual o número da aula?'] }}",
+            "AULA": "={{ $json['Qual o título da aula?'] }}",
+            "DESCRIÇÃO": "={{ $json['Qual a descrição da aula?'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "DATA",
+              "displayName": "DATA",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "TRILHA",
+              "displayName": "TRILHA",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "# ",
+              "displayName": "# ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AULA",
+              "displayName": "AULA",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "DESCRIÇÃO",
+              "displayName": "DESCRIÇÃO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        224,
+        -48
+      ],
+      "id": "f8d5dbf5-dfa3-4e54-b9df-ea77374322ab",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "bTuLNqjzNoQ3Wrq8",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "2023familia.moreira@gmail.com",
+        "subject": "=Check ✔️ Aula {{ $json['# '] }} concluída com sucesso!",
+        "emailType": "text",
+        "message": "=Parabéns, Ana! \n\nVocê está evoluindo na sua trilha {{ $json.TRILHA }}!\n\nEstudou com sucesso a aula: {{ $json['# '] }} - {{ $json.AULA }}.\n\nAgora sabe {{ $json['DESCRIÇÃO'] }}.\n\nEstou muito orgulhosa de você!\n\nContinue assim!\n\nAna Rika",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        432,
+        -48
+      ],
+      "id": "09554ca3-d47f-4827-ae01-a7891699917e",
+      "name": "Send a message",
+      "webhookId": "137ff68e-c6d3-4070-8eae-41e5c8bacfad",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "syZQsN5mpbuNBIpD",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {
+    "On form submission": [
+      {
+        "Qual trilha você está fazendo?": "Introdução ao n8n com agentes de IA",
+        "Qual o número da aula?": 1,
+        "Qual o título da aula?": "Introdução ao n8n, workflows e agentes de IA",
+        "Qual a descrição da aula?": "Conhecer os conceitos básicos de automação, fluxos e uso de IA no n8n",
+        "submittedAt": "2025-09-22T11:26:07.752-03:00",
+        "formMode": "test"
+      }
+    ]
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "f246ba6749fb1d090ba9c9f175218ce6e634b440689becb02feef7f098447cb2"
+  }
+}
