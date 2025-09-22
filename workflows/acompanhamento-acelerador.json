@@ -151,7 +151,7 @@
     },
     {
       "parameters": {
-        "sendTo": "2023familia.moreira@gmail.com",
+        "sendTo": "youremail@gmail.com",
         "subject": "=Check ✔️ Aula {{ $json['# '] }} concluída com sucesso!",
         "emailType": "text",
         "message": "=Parabéns, Ana! \n\nVocê está evoluindo na sua trilha {{ $json.TRILHA }}!\n\nEstudou com sucesso a aula: {{ $json['# '] }} - {{ $json.AULA }}.\n\nAgora sabe {{ $json['DESCRIÇÃO'] }}.\n\nEstou muito orgulhosa de você!\n\nContinue assim!\n\nAna Rika",
