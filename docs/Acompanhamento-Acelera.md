@@ -28,3 +28,6 @@ Este workflow coleta dados de progresso dos participantes do projeto ACELERA via
 ## 🗂️ Planilha usada
 
 - [Acompanhamento do ACELERA com n8n](https://docs.google.com/spreadsheets/d/1HynDYuiTLfifw-U2Ujsm6FEC9BX0SvlVEfi2wcFCNXw/edit?usp=drivesdk)
+
+
+<img width="1331" height="280" alt="Captura de tela 2025-09-22 151347" src="https://github.com/user-attachments/assets/9791deca-738c-4640-81ec-e60ee110ba8a" />
